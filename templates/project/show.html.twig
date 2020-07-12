@@ -1,16 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>{{ project }}</h1>
+<div class="portfolio-works">
+    <div class="single-project style-01">
+        <div class="col-md-7 left-panel">
+            <div class="project-thumbnails">
+                <a href="{{ asset('images/single/1.jpg') }}" data-fancybox="gallery" class="fancybox"><img src="{{ asset('images/single/1.jpg') }}" alt="Project Image"></a>
+                <a href="{{ asset('images/single/2.jpg') }}" data-fancybox="gallery" class="fancybox"><img src="{{ asset('images/single/2.jpg') }}" alt="Project Image"></a>
+                <a href="{{ asset('images/single/3.jpg') }}" data-fancybox="gallery" class="fancybox"><img src="{{ asset('images/single/3.jpg') }}" alt="Project Image"></a>
+            </div>
+            <!-- /.project-thumbnails -->
+        </div>
+        <div class="col-md-5 right-panel">
+            <div class="project-details">
+                <span class="category">Wooden work</span>
+                <h2 class="item-title">Emarging Lamp Power</h2>
+                <p>
+                    A theatre lighting designer (or LD) works with the director, choreographer, set designer, costume designer, and sound designer to create the lighting, atmosphere, and time of day for the production in response to the text, while keeping in mind issues
+                    of visibility, safety, and cost.
+                </p>
 
-<p>Les données ci dessous sont pour l'instant statiques mais dans le futur une requête récupérera via l'id passée dans l'url les données du projet.</p>
-
-<h2>Data :</h2>
-<ul>
-    <li>{{ title }}</li>
-    <li>{{ description }}</li>
-    <li>{{ project_date }}</li>
-    <li>{{ client }}</li>
-</ul>
+                <div class="project-meta">
+                    <h5>Details</h5>
+                    <ul>
+                        <li>
+                            <span class="meta-id"><span>Client</span></span>
+                            <span><a href="#">Energypec</a></span>
+                        </li>
+                        <li>
+                            <span class="meta-id"><span>Date</span></span>
+                            <span><time datetime="2017-04-30">30-04-2017</time></span>
+                        </li>
+                        <li>
+                            <span class="meta-id"><span>Category</span></span>
+                            <span><a href="#">Design</a><a href="#">User Interface</a><a href="#">Photoshop</a></span>
+                        </li>
+                        <li>
+                            <span class="meta-id"><span>Share</span></span>
+                            <span class="share">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.project-meta -->
+                <a href="#" class="btn">Launch Peoject <i class="icon-arrow"></i></a>
+                <!-- /.btn -->
+            </div>
+            <!-- /.project-details -->
+        </div>
+    </div>
+    <!-- /.single-project -->
+</div>
+<!-- /.portfolio-works -->
 
 {% endblock %}

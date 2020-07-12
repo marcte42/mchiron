@@ -1,12 +1,135 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zxx">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Mélanie Chiron!{% endblock %}</title>
+    <meta name="description" content="Owlfolio - Portfolio HTML5 Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Glyphter.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    {% endblock %}
+
+    <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
+
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script> -->
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/.min.js"></script> -->
+
+
+</head>
+
+
+<body>
+    
+    <section class="wrapper-contents">
+        <div class="content-has-sidebar">
+            <div class="row">
+
+                <div class="col-sm-2">
+                    
+                    <aside class="sidebar">
+                        <nav class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-menu" aria-expanded="false">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" href="{{ path('app_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a>
+                            </div>
+
+
+                            <div class="sidebar-menu collapse navbar-collapse" id="sidebar-menu">
+                                <ul class="nav navbar-nav">
+                                    <li class="meni-item">
+                                        <a href="{{ path('app_homepage') }}">Home</a>
+                                    </li>
+
+                                    <li class="meni-item">
+                                        <a href="{{ path('app_homepage') }}">About</a>
+                                    </li>
+
+                                    <li class="meni-item">
+                                        <a href="{{ path('app_homepage') }}">Blog</a>
+                                    </li>
+
+                                    <li class="meni-item">
+                                        <a href="{{ path('app_homepage') }}">Contact</a>
+                                    </li>
+
+                                    <li class="meni-item">
+                                        <a href="{{ path('app_homepage') }}">Admin</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div class="menu-social hidden-xs">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                        </div>
+                        <!-- /.menu-social -->
+
+                        <footer class="colophon site-footer hidden-xs">
+                            <div class="copyright">
+                                2017 © <a href="demos.jeweltheme.com/owlfolio">Owlfolio</a>
+                            </div>
+                            <!-- /.copyright -->
+                        </footer>
+                        <!-- /.site-footer -->
+                    </aside>
+                    <!-- /.sidebar -->
+                </div>
+
+                <div class="col-sm-10">
+                    
+                    {% block body %}{% endblock %}
+
+                    <footer class="colophon site-footer visible-xs text-center">
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                        </div>
+                        <!-- /.footer-social -->
+
+                        <div class="copyright">
+                            2017 © <a href="http://demos.jeweltheme.com/owlfolio">Owlfolio</a> Developed by <a href="https://jeweltheme.com">Jeweltheme</a>
+                        </div>
+                        <!-- /.copyright -->
+                    </footer>
+                    <!-- /.site-footer -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.content-has-sidebar -->
+    </section>
+    <!-- /.wrapper-contents -->
+
+
+
+    {% block javascripts %}
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+</body>
+
 </html>
