@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>{{ project }}</h1>
+
+<p>Les données ci dessous sont pour l'instant statiques mais dans le futur une requête récupérera via l'id passée dans l'url les données du projet.</p>
+
+<h2>Data :</h2>
+<ul>
+    <li>{{ title }}</li>
+    <li>{{ description }}</li>
+    <li>{{ project_date }}</li>
+    <li>{{ client }}</li>
+</ul>
+
+{% endblock %}
