@@ -13,11 +13,10 @@
         </div>
         <div class="col-md-5 right-panel">
             <div class="project-details">
-                <span class="category">Wooden work</span>
-                <h2 class="item-title">Emarging Lamp Power</h2>
-                <p>
-                    A theatre lighting designer (or LD) works with the director, choreographer, set designer, costume designer, and sound designer to create the lighting, atmosphere, and time of day for the production in response to the text, while keeping in mind issues
-                    of visibility, safety, and cost.
+                <span class="category">{{ category.name }}</span>
+                <h2 class="item-title">{{ project.title }}</h2>
+                <p style="text-align: justify;">
+                    {{ project.description }}
                 </p>
 
                 <div class="project-meta">
@@ -25,15 +24,11 @@
                     <ul>
                         <li>
                             <span class="meta-id"><span>Client</span></span>
-                            <span><a href="#">Energypec</a></span>
+                            <span>{{ project.client }}</span>
                         </li>
                         <li>
                             <span class="meta-id"><span>Date</span></span>
-                            <span><time datetime="2017-04-30">30-04-2017</time></span>
-                        </li>
-                        <li>
-                            <span class="meta-id"><span>Category</span></span>
-                            <span><a href="#">Design</a><a href="#">User Interface</a><a href="#">Photoshop</a></span>
+                            <span><time datetime="2017-04-30">{{ project.date|date("Y-m-d") }}</time></span>
                         </li>
                         <li>
                             <span class="meta-id"><span>Share</span></span>
@@ -46,7 +41,7 @@
                     </ul>
                 </div>
                 <!-- /.project-meta -->
-                <a href="#" class="btn">Launch Peoject <i class="icon-arrow"></i></a>
+                <a href="{{ path('app_homepage') }}" class="btn">Revenir à l'accueil <i class="icon-arrow"></i></a>
                 <!-- /.btn -->
             </div>
             <!-- /.project-details -->

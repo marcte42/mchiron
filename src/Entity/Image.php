@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ImagesRepository;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ImagesRepository::class)
+ * @ORM\Entity(repositoryClass=ImageRepository::class)
  */
-class Images
+class Image
 {
     /**
      * @ORM\Id()
@@ -25,7 +25,7 @@ class Images
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $modifiedname;
+    private $modifieddate;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -33,25 +33,24 @@ class Images
     private $obsoletedate;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="images")
+     */
+    private $project;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=2083)
+     * @ORM\Column(type="string", length=255)
      */
-    private $link;
+    private $path;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $priority;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $project;
 
     public function getId(): ?int
     {
@@ -70,14 +69,14 @@ class Images
         return $this;
     }
 
-    public function getModifiedname(): ?\DateTimeInterface
+    public function getModifieddate(): ?\DateTimeInterface
     {
-        return $this->modifiedname;
+        return $this->modifieddate;
     }
 
-    public function setModifiedname(?\DateTimeInterface $modifiedname): self
+    public function setModifieddate(?\DateTimeInterface $modifieddate): self
     {
-        $this->modifiedname = $modifiedname;
+        $this->modifieddate = $modifieddate;
 
         return $this;
     }
@@ -94,6 +93,18 @@ class Images
         return $this;
     }
 
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -106,14 +117,14 @@ class Images
         return $this;
     }
 
-    public function getLink(): ?string
+    public function getPath(): ?string
     {
-        return $this->link;
+        return $this->path;
     }
 
-    public function setLink(string $link): self
+    public function setPath(string $path): self
     {
-        $this->link = $link;
+        $this->path = $path;
 
         return $this;
     }
@@ -123,21 +134,9 @@ class Images
         return $this->priority;
     }
 
-    public function setPriority(int $priority): self
+    public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
-
-        return $this;
-    }
-
-    public function getProject(): ?Project
-    {
-        return $this->project;
-    }
-
-    public function setProject(?Project $project): self
-    {
-        $this->project = $project;
 
         return $this;
     }

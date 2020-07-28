@@ -45,9 +45,20 @@ class Project
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project")
+     */
+    private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="projects")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $projectdate;
+    private $date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -55,24 +66,13 @@ class Project
     private $client;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $priority;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="project")
-     */
-    private $images;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="projects")
-     */
-    private $category;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
-        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -97,7 +97,7 @@ class Project
         return $this->modifieddate;
     }
 
-    public function setModifieddate(?\DateTimeInterface $modifieddate): self
+    public function setModifieddate(\DateTimeInterface $modifieddate): self
     {
         $this->modifieddate = $modifieddate;
 
@@ -140,14 +140,57 @@ class Project
         return $this;
     }
 
-    public function getProjectdate(): ?\DateTimeInterface
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
     {
-        return $this->projectdate;
+        return $this->images;
     }
 
-    public function setProjectdate(?\DateTimeInterface $projectdate): self
+    public function addImage(Image $image): self
     {
-        $this->projectdate = $projectdate;
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProject() === $this) {
+                $image->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
@@ -169,66 +212,9 @@ class Project
         return $this->priority;
     }
 
-    public function setPriority(int $priority): self
+    public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Images[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getProject() === $this) {
-                $image->setProject(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(Category $category): self
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->contains($category)) {
-            $this->category->removeElement($category);
-        }
 
         return $this;
     }

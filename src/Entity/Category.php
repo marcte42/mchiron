@@ -40,12 +40,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $priority;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="category")
      */
     private $projects;
 
@@ -107,18 +102,6 @@ class Category
         return $this;
     }
 
-    public function getPriority(): ?int
-    {
-        return $this->priority;
-    }
-
-    public function setPriority(int $priority): self
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Project[]
      */
@@ -131,7 +114,7 @@ class Category
     {
         if (!$this->projects->contains($project)) {
             $this->projects[] = $project;
-            $project->addCategory($this);
+            $project->setCategory($this);
         }
 
         return $this;
@@ -141,7 +124,10 @@ class Category
     {
         if ($this->projects->contains($project)) {
             $this->projects->removeElement($project);
-            $project->removeCategory($this);
+            // set the owning side to null (unless already changed)
+            if ($project->getCategory() === $this) {
+                $project->setCategory(null);
+            }
         }
 
         return $this;

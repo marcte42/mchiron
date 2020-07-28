@@ -3,232 +3,30 @@
 {% block body %}
 <div class="portfolio-works">
     <ul class="filter right-side">
-        <li><a class="active" href="#" data-filter="*">Show All <span class="count">12</span></a></li>
+        <li><a class="active" href="#" data-filter="*">Tous <span class="count">12</span></a></li>
         <li><a href="#" data-filter=".cat-1">Enfant <span class="count">6</span></a></li>
-        <li><a href="#" data-filter=".cat-2">Maison <span class="count">3</span></a></li>
-        <li><a href="#" data-filter=".cat-2">Mode <span class="count">12</span></a></li>
-        <li><a href="#" data-filter=".cat-2">Rendus <span class="count">12</span></a></li>
+        <li><a href="#" data-filter=".cat-2">Mode <span class="count">3</span></a></li>
+        <li><a href="#" data-filter=".cat-3">Maison <span class="count">12</span></a></li>
+        <li><a href="#" data-filter=".cat-4">Rendus <span class="count">12</span></a></li>
     </ul>
-
+    
     <div class="portfolio-items grid-3column-01">
-        <div class="item col-xs-4 cat-1">
+        {% for project in projects %}
+        <div class="item col-xs-4 cat-{{ project.c_id }}">
+            <a href="{{ path('app_project_show', { project_id: project.id }) }}">
             <div class="item-inner">
                 <img src="images/projects/1.jpg" alt="Portfolio Image">
                 <div class="item-details">
                     <div class="item-texts">
-                        <h3 class="item-title"><a href="{{ path('app_project_show', { project_id: '29' }) }}">Pipi caca love</a></h3>
-                        <p class="categor">Mockup</p>
+                        <h3 class="item-title">{{ project.title }}</h3>
+                        <p class="category">{{ project.c_name }}</p>
                     </div>
                 </div>
             </div>
+            </a>
         </div>
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/projects/2.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="/projects/1">Pipi caca love</a></h3>
-                        <p class="category">Mockup</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/projects/3.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="/projects/1">Pipi caca love</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-2">
-            <div class="item-inner">
-                <img src="images/projects/4.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="/projects/1">Metal ring hole</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Decor</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-3">
-            <div class="item-inner">
-                <img src="images/projects/5.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-03.html">Aluminium black tube</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Photography</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-2">
-            <div class="item-inner">
-                <img src="images/projects/6.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-04.html">Infinity speaker</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Decor</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-3">
-            <div class="item-inner">
-                <img src="images/projects/7.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-01.html">Steel frame glasses</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Graphics</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/projects/8.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-02.html">Paper napkin sample</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/projects/9.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-03.html">Visiting card demo</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-3">
-            <div class="item-inner">
-                <img src="images/01/8.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-04.html">Transparent cover box</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Photography</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/01/9.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-01.html">Letter typography style</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/01/10.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-02.html">Brochure template</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-1">
-            <div class="item-inner">
-                <img src="images/01/11.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-03.html">Product tag design</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Mockup</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item col-xs-4 cat-2">
-            <div class="item-inner">
-                <img src="images/01/12.jpg" alt="Portfolio Image">
-                <div class="item-details">
-                    <div class="item-texts">
-                        <h3 class="item-title"><a href="project-04.html">White light stand</a></h3>
-                        <!-- /.item-title -->
-                        <p class="category">Decor</p>
-                    </div>
-                    <!-- /.item-texts -->
-                </div>
-                <!-- /.item-details -->
-            </div>
-        </div>
-        <!--/.item-->
-
+        {% endfor %}
     </div>
-    <!--/.portfolio-items-->
+
 </div>
-<!-- /.portfolio-works -->
 {% endblock %}

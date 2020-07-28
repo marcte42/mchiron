@@ -19,6 +19,21 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
+    /**
+     * @return Project[]
+     */
+    public function findAllWithCategory()
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb
+            ->select('p.id', 'p.title', 'c.id AS c_id', 'c.name AS c_name')
+            ->innerJoin('App\Entity\Category', 'c', 'WITH', 'c = p');
+
+        dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Project[] Returns an array of Project objects
     //  */
